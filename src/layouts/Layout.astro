@@ -1,0 +1,29 @@
+---
+import Header from '../components/header/header.astro';
+import Footer from '../components/footer/footer.astro';
+export interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description}>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="theme-color" content="#1d4ed8" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-white py-8">
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
