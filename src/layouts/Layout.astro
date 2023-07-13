@@ -1,6 +1,7 @@
 ---
-import Header from '../components/header/header.astro';
-import Footer from '../components/footer/footer.astro';
+import Header from "../components/header/header.astro";
+import Footer from "../components/footer/footer.astro";
+import { SEO } from "astro-seo";
 export interface Props {
 	title: string;
 	description: string;
@@ -13,13 +14,40 @@ const { title, description } = Astro.props;
 <html lang="ar" dir="rtl">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content={description}>
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="./favicon.png" />
 		<meta name="theme-color" content="#1d4ed8" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="sitemap" href="./sitemap-index.xml" />
 		<title>{title}</title>
+		<SEO
+			title={title}
+			description={description}
+			openGraph={{
+				basic: {
+					title: title,
+					type: "A type.",
+					image: "https://big-family-tree.github.io/astro-al7mood.net/favicon.png",
+				},
+			}}
+			twitter={{
+				creator: "@bufai7an",
+			}}
+			extend={{
+				// extending the default link tags
+				link: [{ rel: "icon", href: "./favicon.ico" }],
+				// extending the default meta tags
+				meta: [
+					{
+						name: "twitter:image",
+						content: "https://big-family-tree.github.io/astro-al7mood.net/favicon.png",
+					},
+					{ name: "twitter:title", content: title },
+					{ name: "twitter:description", content: description },
+				],
+			}}
+		/>
 	</head>
 	<body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-white py-8">
 		<Header />
