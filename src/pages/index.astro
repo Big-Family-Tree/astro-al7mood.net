@@ -50,8 +50,9 @@ import Alert from '../components/Alert.astro';
 	
 	</main>
 </Layout>
-<script is:inline src="./src/assets/scripts/d3.js"></script>
-<script is:inline type="module">
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script type="module">
+
 	import { Runtime, Inspector } from "./src/assets/scripts/runtime.js";
 	import define from "./src/assets/scripts/tree.js?v=04052022";
 
