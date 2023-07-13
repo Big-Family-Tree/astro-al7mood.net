@@ -53,8 +53,8 @@ import Alert from '../components/Alert.astro';
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script type="module">
 
-	import { Runtime, Inspector } from "./src/assets/scripts/runtime.js";
-	import define from "./src/assets/scripts/tree.js?v=04052022";
+	import { Runtime, Inspector } from "./assets/scripts/runtime.js";
+	import define from "./assets/scripts/tree.js?v=04052022";
 
 	const runtime = new Runtime();
 	const main = runtime.module(define, Inspector.into("#chart"));
