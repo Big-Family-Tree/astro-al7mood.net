@@ -1,0 +1,17 @@
+---
+import { Icon } from 'astro-icon'
+
+const { location } = Astro.props;
+const locations = {
+    "الجمش": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "القرين": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "الرديفة": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "مشرفة": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "الخالدية": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "الصالحية": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "العزيزية": "https://www.google.com/maps/place/%D9%85%D8%AC%D8%A7%D9%84%D8%B3+%D8%A8%D9%86+%D8%B9%D8%B3%D8%A7%D9%81+%D8%A8%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2%D9%8A%D9%87%E2%80%AD/@24.7333838,43.7795869,17z/data=!3m1!4b1!4m6!3m5!1s0x1584272932cff213:0x47ad2e5947edc900!8m2!3d24.7333838!4d43.7795869!16s%2Fg%2F11sv_mwml2?hl=en-SA&entry=ttu",
+    "الثريانية": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+    "العين": "https://goo.gl/maps/6Z6Z1Z6Z6Z6Z6Z6Z6",
+}
+---
+<a class="border-b border-dashed pb-1 group hover:px-2 hover:py-1 hover:rounded hover:bg-black hover:bg-opacity-20" href={locations[location]} title={location}>{location} <Icon class="hidden group-hover:inline ms-2 h-4" name="uiw:map" /></a>

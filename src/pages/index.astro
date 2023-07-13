@@ -1,44 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Alert from '../components/Alert.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Alert from "../components/Alert.astro";
+import Ago from "../components/Ago.astro";
 ---
 
-<Layout title="شجرة ذوي حمود" description='شجرة العائلة لذوي حمود الدلبحي العتيبي، أصول وفروع العائلة'>
-	
+<Layout title="شجرة ذوي حمود" description="شجرة العائلة لذوي حمود الدلبحي العتيبي، أصول وفروع العائلة">
 	<main class="container mx-auto">
 		<Alert title="">
 			لدى شجرة ذوي حمود منزل جديد على الانترنت على العنوان
 			<a class="underline font-bold hover:text-yellow-600" href="https://al7mood.com">https://al7mood.com</a>
-		
 		</Alert>
-		
+
 		<Alert title="">
 			الإضافات الحديثه مبينه <span class="text-red-500 dark:text-red-400 font-bold">باللون الأحمر</span>
 		</Alert>
-		
+
 		<Alert title="">
-			<span>تاريخ التحديث:</span> 04-05-2022
+			<b>تاريخ آخر تحديث كان</b>
+			<Ago date="4-6-2022" />
 		</Alert>
-		
-		<Alert title="">
-			<span>للملاحظات:</span> التواصل مع محمد حميان على <a class="font-bold underline hover:text-yellow-600" href="tel:+966559357653">0559357653</a>
-		</Alert>
-		
+
 
 		<div id="tree" class="my-12 p-4 bg-slate-50 dark:bg-white dark:bg-opacity-5 rounded-lg">
 			<h2 class="font-bold text-2xl mb-4">الشجرة</h2>
 			<div id="chart"></div>
 		</div>
 
-		
-
 		<div id="statistics" class="my-12">
 			<h2 class="font-bold text-2xl mb-4">الإحصائيات</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				<Card title="عدد الأفراد">
 					<div id="indicount"></div>
-					</Card>
+				</Card>
 				<Card title="الفروع الأطول">
 					<div id="mostreached"></div>
 				</Card>
@@ -47,18 +41,77 @@ import Alert from '../components/Alert.astro';
 				</Card>
 			</div>
 		</div>
-	
 	</main>
 </Layout>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script type="module">
+import { Runtime, Inspector } from "./assets/scripts/runtime.js";
+import define from "./assets/scripts/tree.js?v=04052022";
 
-	import { Runtime, Inspector } from "./assets/scripts/runtime.js";
-	import define from "./assets/scripts/tree.js?v=04052022";
+const response = await fetch("./assets/data/data.json");
 
-	const runtime = new Runtime();
-	const main = runtime.module(define, Inspector.into("#chart"));
-	function updateData(d) {
-		alert(d);
+const ancestryData = await response.json();
+const individualId = "295";
+
+const roundedNumber = Math.floor(countChildren(ancestryData, individualId) / 10) * 10;
+
+console.log("Number of children:", `${roundedNumber}+`);
+document.getElementById("individuals-count").innerHTML = `${roundedNumber}+`;
+
+const runtime = new Runtime();
+const main = runtime.module(define, Inspector.into("#chart"));
+
+function updateData(d) {
+	alert(d);
+}
+
+// Assuming you have loaded the JSON data into a variable called 'ancestryData'
+function countChildren(ancestryData, individualId) {
+	const individual = findIndividualById(ancestryData, individualId);
+	console.log("indiv", individual);
+
+	if (individual) {
+		return countChildrenRecursive(individual);
+
 	}
+
+	return 0;
+}
+
+function countChildrenRecursive(individual) {
+  let count = 0;
+  
+  if (Array.isArray(individual.children)) {
+    count += individual.children.length;
+    
+    for (const child of individual.children) {
+      count += countChildrenRecursive(child);
+    }
+  }
+  
+  return count;
+}
+
+
+function findIndividualById(ancestryData, individualId) {
+
+	if (ancestryData.Id == individualId) {
+		console.log("comparing", ancestryData.Id, individualId);
+		console.log("found", ancestryData.name);
+		return ancestryData;
+	}
+
+	if (Array.isArray(ancestryData.children)) {
+		for (const child of ancestryData.children) {
+			const found = findIndividualById(child, individualId);
+			if (found) {
+				return found;
+			}
+		}
+	}
+
+	return null;
+}
+
+	// Usage example
 </script>
