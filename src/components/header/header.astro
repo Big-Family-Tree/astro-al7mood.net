@@ -1,20 +1,16 @@
 ---
-import Alert from "../Alert.astro";
-import MapsLink from "../MapsLink.astro";
+import Ago from "../Ago.astro";
+
 ---
 
-<header class="container mx-auto mb-8">
-    <div id="tree-info" class="p-2 rounded-lg">
+<div id="banner" tabindex="-1" class="py-3  bg-gray-50 border border-b border-gray-200 sm:items-center dark:border-gray-700 lg:py-4 dark:bg-gray-800">
+    <div class="container mx-auto">
+        <p class="text-sm font-light text-gray-500 dark:text-gray-400"><b>تاريخ آخر تحديث</banner> <Ago date="4-6-2022" /></p>
+    </div>
+</div>
+<header class="container mx-auto mb-2 py-8">
+    <div id="tree-info" class="">
         <h1 class="font-extrabold text-3xl mb-4">شجرة ذوي حمود
             <small class="text-slate-500 font-extralight text-base block">شجرة عائلة ذوي حمود من الدلابحه وهم من طلحة من الروقة من عتيبة</small></h1>
-        <p class="leading-loose">
-            يسكن ذوي حمود في
-            <MapsLink location="الجمش" /> في قرى <MapsLink location="القرين" /> و<MapsLink location="الرديفة" /> و<MapsLink
-                location="مشرفة"
-            /> و<MapsLink location="الخالدية" /> و<MapsLink location="الصالحية" /> و<MapsLink location="العزيزية" /> و<MapsLink
-                location="الثريانية"
-            /> و<MapsLink location="العين" /> . تم البدء بإعداد شجرة ذوي حمود في عام 2014 وبمساهمة فروع ذوي حمود تم بحمد
-            الله إضافة <span id="individuals-count">900+</span> فرد إلى الشجرة حتى تاريخه.
-        </p>
     </div>
 </header>

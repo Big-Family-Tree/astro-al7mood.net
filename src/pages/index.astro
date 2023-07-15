@@ -2,23 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Alert from "../components/Alert.astro";
-import Ago from "../components/Ago.astro";
+import MapsLink from "../components/MapsLink.astro";
+
 ---
 
 <Layout title="شجرة ذوي حمود" description="شجرة العائلة لذوي حمود الدلبحي العتيبي، أصول وفروع العائلة">
 	<main class="container mx-auto">
-		<Alert title="">
-			لدى شجرة ذوي حمود منزل جديد على الانترنت على العنوان
-			<a class="underline font-bold hover:text-yellow-600" href="https://al7mood.com">https://al7mood.com</a>
-		</Alert>
+		<section id="into" class="my-8">
+			<p class="leading-loose">
+				يسكن ذوي حمود في
+				<MapsLink location="الجمش" /> في قرى <MapsLink location="القرين" /> و<MapsLink location="الرديفة" /> و<MapsLink
+					location="مشرفة"
+				/> و<MapsLink location="الخالدية" /> و<MapsLink location="الصالحية" /> و<MapsLink location="العزيزية" /> و<MapsLink
+					location="الثريانية"
+				/> و<MapsLink location="العين" /> . تم البدء بإعداد شجرة ذوي حمود في عام 2014 وبمساهمة فروع ذوي حمود تم بحمد
+				الله إضافة <span id="individuals-count">900+</span> فرد إلى الشجرة حتى تاريخه.
+			</p>
+		</section>
 
 		<Alert title="">
 			الإضافات الحديثه مبينه <span class="text-red-500 dark:text-red-400 font-bold">باللون الأحمر</span>
-		</Alert>
-
-		<Alert title="">
-			<b>تاريخ آخر تحديث كان</b>
-			<Ago date="4-6-2022" />
 		</Alert>
 
 
