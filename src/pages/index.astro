@@ -58,7 +58,7 @@ const individualId = "295";
 
 const roundedNumber = Math.floor(countChildren(ancestryData, individualId) / 10) * 10;
 
-console.log("Number of children:", `${roundedNumber}+`);
+//console.log("Number of children:", `${roundedNumber}+`);
 document.getElementById("individuals-count").innerHTML = `${roundedNumber}+`;
 
 const runtime = new Runtime();
@@ -71,7 +71,7 @@ function updateData(d) {
 // Assuming you have loaded the JSON data into a variable called 'ancestryData'
 function countChildren(ancestryData, individualId) {
 	const individual = findIndividualById(ancestryData, individualId);
-	console.log("indiv", individual);
+	//console.log("indiv", individual);
 
 	if (individual) {
 		return countChildrenRecursive(individual);
@@ -95,12 +95,11 @@ function countChildrenRecursive(individual) {
   return count;
 }
 
-
 function findIndividualById(ancestryData, individualId) {
 
 	if (ancestryData.Id == individualId) {
-		console.log("comparing", ancestryData.Id, individualId);
-		console.log("found", ancestryData.name);
+		//console.log("comparing", ancestryData.Id, individualId);
+		//console.log("found", ancestryData.name);
 		return ancestryData;
 	}
 

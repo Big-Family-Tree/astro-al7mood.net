@@ -14,8 +14,8 @@ export default function define(runtime, observer) {
 	}
 
 	function calculateBBox() {
-		const {x, y, chartWidth, height} = this.getBBox();
-		return [x, y, chartWidth, height];
+		const {x, y, width, height} = this.getBBox();
+		return [x, y, width, height];
 	}
 
 	function updateStatistics(nodes) {
@@ -98,8 +98,9 @@ export default function define(runtime, observer) {
 
 		if (l[0].parent) {
 			name = name + ' بن ' + getFullname(l[0].parent, place, current);
-		} else {
-			console.log('Long Names', 'node', node, 'place', place, 'current', current);
+		} 
+		else {
+			//console.log('Long Names', 'node', node, 'place', place, 'current', current);
 		}
 
 		return name;
@@ -110,7 +111,7 @@ export default function define(runtime, observer) {
 	};
 
 	window.updateTree = data => {
-		console.log(data);
+		//console.log(data);
 		let root = treeData(d3.hierarchy(data).sum(d => 1));
 		chartSVG.selectAll('*').remove();
 		let link = chartSVG
