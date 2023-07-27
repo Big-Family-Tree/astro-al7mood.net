@@ -7,7 +7,7 @@ import MapsLink from "../components/MapsLink.astro";
 ---
 
 <Layout title="شجرة ذوي حمود" description="شجرة العائلة لذوي حمود الدلبحي العتيبي، أصول وفروع العائلة">
-	<main class="container mx-auto">
+	<main class="container mx-auto  px-2">
 		<section id="into" class="my-8">
 			<p class="leading-loose">
 				يسكن ذوي حمود في
@@ -20,9 +20,11 @@ import MapsLink from "../components/MapsLink.astro";
 			</p>
 		</section>
 
+		<!--
 		<Alert title="">
 			الإضافات الحديثه مبينه <span class="text-red-500 dark:text-red-400 font-bold">باللون الأحمر</span>
 		</Alert>
+		-->
 
 
 		<div id="tree" class="my-12 p-4 bg-slate-50 dark:bg-white dark:bg-opacity-5 rounded-lg">
@@ -32,11 +34,11 @@ import MapsLink from "../components/MapsLink.astro";
 
 		<div id="statistics" class="my-12">
 			<h2 class="font-bold text-2xl mb-4">الإحصائيات</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 				<Card title="عدد الأفراد">
 					<div id="indicount"></div>
 				</Card>
-				<Card title="الفروع الأطول">
+				<Card colSpan=2 title="الفروع الأطول">
 					<div id="mostreached"></div>
 				</Card>
 				<Card title="الأسماء الأكثر استخداماً">

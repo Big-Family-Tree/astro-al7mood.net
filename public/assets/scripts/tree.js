@@ -58,7 +58,7 @@ export default function define(runtime, observer) {
 			.data(gbrdata.sort((a, b) => b.count - a.count))
 			.enter()
 			.append('li')
-			.html(d => d.name + ' (' + d.count + ')');
+			.html(d => d.name + ' <b class="text-xs italic">(' + d.count + ')</b>');
 
 		selected = selectElementByID('commonNames').append('ul').classed('text-sm space-y-2 list-disc list-inside dark:text-gray-800', true);
 		selected
@@ -66,7 +66,7 @@ export default function define(runtime, observer) {
 			.data(names.filter(d => d.count >= 20))
 			.enter()
 			.append('li')
-			.html(d => d.name + ' (' + d.count + ')');
+			.html(d => d.name + ' <b class="text-xs italic">(' + d.count + ')</b>');
 
 		selected = selectElementByID('mostreached').append('ul').classed('text-sm space-y-2 dark:text-gray-800', true);
 		selected
@@ -75,7 +75,8 @@ export default function define(runtime, observer) {
 			.enter()
 			.append('li')
 			.classed('border-b pb-2 border-slate-300 last:border-0 border-dashed', true)
-			.html(d => getFullname(d, 20) + ' الدلبحي');
+			.html(d => getFullname(d, 20) + ' الدلبحي' + ' <b class="text-xs italic">(' + (d.depth + 2) + ')</b>');
+			console.log(mostReach)
 	}
 
 	function getNodesAtDepth(nodes, depth) {
@@ -150,10 +151,10 @@ export default function define(runtime, observer) {
 		node.append('circle')
 			.attr('fill', function (d) {
 				if (d.data.isnew) {
-					return '#ff0000';
+					return 'red';
 				}
 				if (d.children) {
-					return '#555';
+					return '#555555';
 				}
 				return '#999';
 			})
